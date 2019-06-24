@@ -1,8 +1,8 @@
 import re
 import time
 
+import imgkit
 import requests
-from selenium import webdriver
 
 # to track execution time
 start_time = time.time()
@@ -11,11 +11,7 @@ start_time = time.time()
 url = 'https://www.atg.world/view-article/29016'
 
 # take the screenshot of the page
-driver = webdriver.Chrome()
-driver.get(url)
-driver.execute_script("window.scrollTo(0, 500)")
-driver.save_screenshot("screenshot.png")
-driver.close()
+imgkit.from_url(url, 'screenshot.png')
 
 # get structred data and retrieve status code and title of the post
 req = requests.get(url)
